@@ -17,8 +17,62 @@ pip install -e .
 ## 3. Model Training
 We will yolov3, yolov5, yolov8, yolov9, yolov10, yolov11 and yolov12 all use the YOLO module of ultralytics for training, while yolov6 and yolov7 do not support YOLO module. You need to download and configure the environment in https://github.com/meituan/YOLOv6 and https://github.com/WongKinYiu/yolov7 respectively. Localize some codes according to the official documentation prompts, and then set hyperparameters to start training
 
-Since our research did not change the architecture or other parameters of the standard model, we used all the coco pretrained weights (in the COCO pretrained weights folder) for auxiliary training during training, and saved the trained model in the trained model file
 
+| Model |
+| ---- |
+| yolov3-tinyu |
+| yolov3u |
+| yolov5nu |
+| yolov5su |
+| yolov5mu |
+| yolov5lu |
+| yolov5xu |
+| yolov6n |
+| yolov6s |
+| yolov6m |
+| yolov6l |
+| yolov7 |
+| yolov7x |
+| yolov8n |
+| yolov8s |
+| yolov8m |
+| yolov8l |
+| yolov8x |
+| yolov9t |
+| yolov9s |
+| yolov9m |
+| yolov9c |
+| yolov9e |
+| yolov10n |
+| yolov10s |
+| yolov10m |
+| yolov10b |
+| yolov10l |
+| yolov10x |
+| yolo11n |
+| yolo11s |
+| yolo11m |
+| yolo11l |
+| yolo11x |
+| yolov12n |
+| yolov12s |
+| yolov12m |
+| yolov12l |
+| yolov12x |
+
+Since our research did not change the architecture or other parameters of the standard model, we used all the coco pretrained weights for auxiliary training during training, and saved the trained model
+
+COCO pretrained weights is obtained through Baidu Netdisk:
+
+Link: https://pan.baidu.com/s/1n6Go0_cWw3okxy-oYIfN_w?pwd=t8dg 
+
+Extraction Code: t8dg 
+
+Trained model is obtained through Baidu Netdisk:
+
+Link: https://pan.baidu.com/s/10_ROgPeEZdrNIEuaKGSULw?pwd=qeq8
+
+Extraction Code: qeq8
 Set the following hyperparameters (all unmentioned hyperparameters are by default) for training:
 ```bash
 epochs = 400
