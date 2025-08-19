@@ -15,7 +15,7 @@ pip install -e .
 
 
 ## 3. Model Training
-We will yolov3, yolov5, yolov8, yolov9, yolov10, yolov11 and yolov12 all use the YOLO module of ultralytics for training, while yolov6 and yolov7 do not support YOLO module. You need to download and configure the environment in https://github.com/meituan/YOLOv6 and https://github.com/WongKinYiu/yolov7 respectively. Localize some codes according to the official documentation prompts, and then set hyperparameters to start training
+We will yolov3, yolov5, yolov8, yolov9, yolov10, yolov11, yolov12 and yolov13 all use the YOLO module of ultralytics for training, while yolov6 and yolov7 do not support YOLO module. You need to download and configure the environment in https://github.com/meituan/YOLOv6 and https://github.com/WongKinYiu/yolov7 respectively. Localize some codes according to the official documentation prompts, and then set hyperparameters to start training
 
 
 | Model |
@@ -59,6 +59,10 @@ We will yolov3, yolov5, yolov8, yolov9, yolov10, yolov11 and yolov12 all use the
 | yolov12m |
 | yolov12l |
 | yolov12x |
+| yolov13n |
+| yolov13s |
+| yolov13l |
+| yolov13x |
 
 Since our research did not change the architecture or other parameters of the standard model, we used all the coco pretrained weights for auxiliary training during training, and saved the trained model
 
@@ -77,6 +81,7 @@ Set the following hyperparameters (all unmentioned hyperparameters are by defaul
 ```bash
 epochs = 400
 batch_size = 16
+batch_size = 8 # yolov12x and yolov13x
 img_size = 640
 ```
 
@@ -102,5 +107,6 @@ we are indebted to the open-source projects that have provided invaluable suppor
 - YOLOv10: https://github.com/THU-MIG/yolov10
 - YOLOv11: https://github.com/ultralytics/ultralytics
 - YOLOv12: https://github.com/sunsmarterjie/yolov12
+- YOLOv13: https://github.com/iMoonLab/yolov13
 - OpenCV: https://opencv.org/
     
