@@ -51,13 +51,10 @@ def get_model_size(model_path):
         print(f"Error getting model size for {model_path}: {e}")
         return None
 
-# 在runs文件夹中打开终端，
-# conda activate yolo 进入实验环境
-# python multi-model-evaluation.py 进行训练
 if __name__ == "__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    # 定义要评估的模型列表
+    # Define the list of models to be evaluated
     model_paths = [
         'detect/yolov3u.pt/weights/best.pt',
         'detect/yolov3-tinyu.pt/weights/best.pt',
@@ -91,43 +88,47 @@ if __name__ == "__main__":
         'detect/yolov12s.pt/weights/best.pt',
         'detect/yolov12m.pt/weights/best.pt',
         'detect/yolov12l.pt/weights/best.pt' ,
-        'detect/yolov12x.pt/weights/best.pt' 
+        'detect/yolov12x.pt/weights/best.pt' ,
+        'detect/yolov13n.pt/weights/best.pt',
+        'detect/yolov13s.pt/weights/best.pt',
+        'detect/yolov13l.pt/weights/best.pt',
+        'detect/yolov13x.pt/weights/best.pt' 
     ]
     data_yaml = '/root/GC-DET/data.yaml'
 
 
-    # 定义 CSV 文件的表头
+    # Define the header of the CSV file
     fieldnames = [
         'Model', 'mAP50', 'mAP50_95', 'Precision', 'Recall',
         'Preprocess Time', 'Inference Time', 'Postprocess Time',
         'Total Time', 'GFLOPs', 'Model Size'
     ]
 
-    # 打开 CSV 文件并写入表头
+    # Open the CSV file and write the header
     with open('evaluation_results.csv', mode='w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
-        # 遍历每个模型进行评估
+        # Traverse each model for evaluation
         for model_path in model_paths:
             print(f"Evaluating model: {model_path}")
 
-            # 获取 mAP、Precision、Recall、时间指标和 FPS
+            # Acquire mAP, Precision, Recall, Time Metrics and FPS
             metrics = get_metrics(model_path, data_yaml)
             if metrics is None:
                 continue
 
-            # 获取 GFLOPs
+            # Get GFLOPs
             gflops = get_gflops(model_path, device)
             if gflops is None:
                 continue
 
-            # 获取模型大小
+            # Get model size
             model_size = get_model_size(model_path)
             if model_size is None:
                 continue
 
-            # 合并所有指标
+            # Merge all metrics
             all_metrics = {
                 'Model': model_path,
                 **metrics,
@@ -135,7 +136,7 @@ if __name__ == "__main__":
                 'Model Size': model_size
             }
 
-            # 将评估结果写入 CSV 文件
+            # Write evaluation results to CSV file
             writer.writerow(all_metrics)
 
     print("Evaluation completed. Results saved to evaluation_results.csv")
