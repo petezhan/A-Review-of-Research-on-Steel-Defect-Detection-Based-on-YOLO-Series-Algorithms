@@ -1,4 +1,4 @@
-# 《A Review of Research on Steel Defect Detection Based on YOLO Series Algorithms》Related documents
+# 《Comprehensive Benchmarking of YOLO Series Algorithms for Steel Defect Detection: Performance Evaluation and Optimization Insights》Related documents
 
 ## 1. Project Overview
 In this paper, we conduct in-depth research on relevant technical papers, take steel defect detection as the background, comprehensively sort out the development of YOLO series algorithms, and elaborate on various aspects of improvement in each version. Through a comprehensive benchmark analysis on the GC10-DET dataset containing various steel surface defects, the model performance is evaluated by indicators such as accuracy, time and model complexity, and the entropy weight method is used to objectively evaluate each model.
